@@ -1,0 +1,12 @@
+1.  Select TABLE_SCHEMA,TABLE_NAME, string_agg(COLUMN_NAME, ',') as Column_name from INFORMATION_SCHEMA.COLUMNS group by TABLE_NAME,TABLE_SCHEMA
+
+
+
+2.  select CONCAT('truncate table ' , TABLE_SCHEMA,'.', TABLE_NAME,';') from INFORMATION_SCHEMA.TABLES where TABLE_SCHEMA='Rinku';
+
+
+3.  select TABLE_SCHEMA,TABLE_NAME, CONCAT('select ','* ','from ',TABLE_SCHEMA,'.',TABLE_NAME,';') as query from INFORMATION_SCHEMA.TABLES where TABLE_SCHEMA='Rinku';
+
+
+
+4. select TABLE_SCHEMA, TABLE_NAME,string_agg(COLUMN_NAME, ',') as Primary_key_fields from INFORMATION_SCHEMA.CONSTRAINT_COLUMN_USAGE where CONSTRAINT_NAME LIKE '%PK_%' group by TABLE_NAME,TABLE_SCHEMA
